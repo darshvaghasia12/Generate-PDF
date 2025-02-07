@@ -4,4 +4,5 @@ gunicorn==21.2.0
 python-dotenv==1.0.1
 
 # Specify Python version
-python>=3.11
+gunicorn
+google-cloud-storage
