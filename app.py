@@ -4,6 +4,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import os
 import uuid
+import json
 
 # Retrieve the JSON key from the environment variable
 
