@@ -8,13 +8,20 @@ import uuid
 # Retrieve the JSON key from the environment variable
 
 
-gcs_key = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+# Load Google Cloud credentials from the environment variable
+GOOGLE_CLOUD_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
-# if gcs_key:
-#     key_path = "/tmp/gcs-key.json"  # Safe temporary location
-#     with open(key_path, "w") as f:
-#         f.write(gcs_key)
-#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path  # Set it for Google SDK
+# Ensure the credentials are stored correctly
+if GOOGLE_CLOUD_CREDENTIALS:
+    credentials_dict = json.loads(GOOGLE_CLOUD_CREDENTIALS)  # Parse the JSON string
+    credentials_path = "/tmp/gcs-key.json"  # Temporary path to store the JSON file
+    
+    with open(credentials_path, "w") as f:
+        json.dump(credentials_dict, f)
+
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path  # Set the environment variable
+else:
+    raise Exception("GOOGLE_APPLICATION_CREDENTIALS environment variable not set")
 
 app = Flask(__name__)
 
