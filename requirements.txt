@@ -6,4 +6,3 @@ python-dotenv==1.0.1
 # Specify Python version
 gunicorn
 google-cloud-storage
-json
