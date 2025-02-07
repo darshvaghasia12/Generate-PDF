@@ -6,13 +6,15 @@ import os
 import uuid
 
 # Retrieve the JSON key from the environment variable
+
+
 gcs_key = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
 
-if gcs_key:
-    key_path = "/tmp/gcs-key.json"  # Safe temporary location
-    with open(key_path, "w") as f:
-        f.write(gcs_key)
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path  # Set it for Google SDK
+# if gcs_key:
+#     key_path = "/tmp/gcs-key.json"  # Safe temporary location
+#     with open(key_path, "w") as f:
+#         f.write(gcs_key)
+#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path  # Set it for Google SDK
 
 app = Flask(__name__)
 
